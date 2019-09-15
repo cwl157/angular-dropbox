@@ -1,0 +1,35 @@
+<a href="{{authUrl}}" [hidden]="isAuthenticated">Connect to Dropbox</a>
+<p [hidden]="!isAuthenticated">Connected to dropbox</p>
+<p [hidden]="!IsLoading">Loading...</p>
+<br /><br />
+<label for="title">Title: </label><input id="title" type="text" [(ngModel)]="newBook.Title" />
+<br /><br />
+<label for="Author">Author: </label><input id="author" type="text" [(ngModel)]="newBook.Author" />
+<br /><br />
+<label for="length">Length (In Pages): </label><input id="length" type="number" min="0" [(ngModel)]="newBook.Length" />
+<br /><br />
+<label for="published">Date Published: </label><input id="published" type="date" [(ngModel)]="newBook.PublishedDate" />
+<br /><br />
+<button (click)="addBook()" [disabled]="!isAuthenticated">Add Book</button>
+
+<h1>Books</h1>
+  <table>
+<thead>
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Length (In Pages)</th>
+    <th>Publish Date</th>
+    <th>Delete</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let book of Books; let i = index">
+    <td>{{book.Title}}</td>
+    <td>{{book.Author}}</td>
+    <td>{{book.Length}}</td>
+    <td>{{book.PublishedDate}}</td>
+    <td><button (click)="removeBook(i)">X</button></td>
+  </tr>
+</tbody>
+</table>
