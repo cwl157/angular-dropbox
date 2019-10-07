@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     AppComponent.isLoading = false;
 
     var dbx = new Dropbox({ clientId: this.CLIENT_ID });
-    this.authUrl = dbx.getAuthenticationUrl('http://localhost:8080/auth');
+    this.authUrl = dbx.getAuthenticationUrl('http://localhost:4200/auth');
     
     this.dropboxToken = Utils.getAccessTokenFromUrl();
     this.isAuthenticated = this.dropboxToken !== undefined;
